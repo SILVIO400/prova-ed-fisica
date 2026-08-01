@@ -272,20 +272,24 @@
       };
 
       const exportarCSV = () => {
-        let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += "Data,Nome,Turma,Nota,Respostas Discursivas\n";
+        // 1. Adicionado \uFEFF para consertar os acentos no Excel
+        let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+        
+        // 2. Trocado as vírgulas por ponto e vírgula (;)
+        csvContent += "Data;Nome;Turma;Nota;Respostas Discursivas\n";
         
         submissoes.forEach(sub => {
           const dataFormatada = new Date(sub.data).toLocaleString('pt-BR');
           let respostasDiscursivas = "";
           BANCO_DE_QUESTOES.forEach((q, idx) => {
             if(q.tipo === 'discursiva') {
-              // Limpa quebras de linha para não quebrar a planilha
               const textoLimpo = (sub.respostas[idx] || 'Em branco').replace(/(\r\n|\n|\r)/gm, " ");
               respostasDiscursivas += `Q${idx+1}: ${textoLimpo} | `;
             }
           });
-          const linha = `"${dataFormatada}","${sub.nome}","${sub.turma}","${sub.nota}","${respostasDiscursivas}"`;
+          
+          // 3. Trocado as vírgulas por ponto e vírgula (;) nesta linha também
+          const linha = `"${dataFormatada}";"${sub.nome}";"${sub.turma}";"${sub.nota}";"${respostasDiscursivas}"`;
           csvContent += linha + "\n";
         });
 
@@ -296,7 +300,6 @@
         document.body.appendChild(link);
         link.click();
       };
-
       return (
         <div className="min-h-screen">
           
