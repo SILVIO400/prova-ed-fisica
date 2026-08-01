@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avaliação 3º Bimestre - Educação Física</title>
+  <title>Avaliação Bimestral - Educação Física</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -34,10 +34,11 @@
 
     const TURMAS = ["8º ano A", "8º ano B", "8º ano C", "8º ano D", "8º ano E", "8º ano F", "8º ano G"];
 
+    // O LoremFlickr vai buscar imagens relacionadas às palavras em inglês na URL
     const BANCO_DE_QUESTOES = [
       {
         id: 1,
-        imagem: "https://picsum.photos/seed/volei1/800/400",
+        imagem: "https://loremflickr.com/800/400/teamwork,sports/all",
         tipo: 'objetiva',
         pergunta: "Nas primeiras aulas do bimestre, nós organizamos o Projeto Jogos Interclasses. Em vez de o professor decidir tudo, a turma participou da divisão dos times e escolheu quem seriam os integrantes de cada equipe. Por que essa forma de escolha é importante para a nossa turma?",
         alternativas: [
@@ -50,7 +51,7 @@
       },
       {
         id: 2,
-        imagem: "https://picsum.photos/seed/ginastica2/800/400",
+        imagem: "https://loremflickr.com/800/400/breathing,yoga/all",
         tipo: 'objetiva',
         pergunta: "Nas aulas de Ginástica de Conscientização Corporal, nós fizemos exercícios de respiração e relaxamento depois das atividades mais pesadas. Como esse aprendizado sobre respirar bem pode te ajudar na sua vida fora da escola?",
         alternativas: [
@@ -63,7 +64,7 @@
       },
       {
         id: 3,
-        imagem: "https://picsum.photos/seed/saude3/800/400",
+        imagem: "https://loremflickr.com/800/400/fitness,health/all",
         tipo: 'objetiva',
         pergunta: "Muitos perfis na internet postam fotos de corpos perfeitos e cheios de filtros, dizendo que ter saúde é ser extremamente magro ou ter músculos gigantes. Depois do que aprendemos sobre postura e cuidados com o corpo, o que é ter um corpo saudável de verdade?",
         alternativas: [
@@ -76,7 +77,7 @@
       },
       {
         id: 4,
-        imagem: "https://picsum.photos/seed/arbitro4/800/400",
+        imagem: "https://loremflickr.com/800/400/referee,sports/all",
         tipo: 'objetiva',
         pergunta: "Durante um jogo do Interclasses na quadra do CEF 412, rolou uma dúvida sobre uma falta que o árbitro não viu. Pensando no respeito e no espírito de equipe (fair play), o que os alunos devem fazer?",
         alternativas: [
@@ -89,7 +90,7 @@
       },
       {
         id: 5,
-        imagem: "https://picsum.photos/seed/alongamento5/800/400",
+        imagem: "https://loremflickr.com/800/400/stretching,flexibility/all",
         tipo: 'objetiva',
         pergunta: "Nas aulas de alongamento, vimos a diferença entre esticar o corpo para relaxar e treinar para ganhar flexibilidade. Pensando na nossa saúde para o futuro, por que manter o corpo flexível é importante?",
         alternativas: [
@@ -102,7 +103,7 @@
       },
       {
         id: 6,
-        imagem: "https://picsum.photos/seed/calistenia6/800/400",
+        imagem: "https://loremflickr.com/800/400/calisthenics,workout/all",
         tipo: 'objetiva',
         pergunta: "Muitas pessoas acham que para entrar em forma e cuidar da saúde é obrigatório pagar uma mensalidade de academia cara ou comprar produtos da moda. Na escola, nós praticamos a CALISTENIA para quebrar essa ideia. O que é a calistenia?",
         alternativas: [
@@ -115,7 +116,7 @@
       },
       {
         id: 7,
-        imagem: "https://picsum.photos/seed/cones7/800/400",
+        imagem: "https://loremflickr.com/800/400/agility,training/all",
         tipo: 'objetiva',
         pergunta: "Nos circuitos com cones e brincadeiras de estafeta, vocês precisaram correr rápido, mudar de direção e pensar rápido para ajudar o time. Além de melhorar a agilidade do corpo, o que mais esse tipo de treino ajuda a desenvolver?",
         alternativas: [
@@ -128,7 +129,7 @@
       },
       {
         id: 8,
-        imagem: "https://picsum.photos/seed/esporte8/800/400",
+        imagem: "https://loremflickr.com/800/400/kids,sports,fun/all",
         tipo: 'objetiva',
         pergunta: "Muitas vezes, as redes sociais e a TV mostram o esporte apenas como um negócio milionário, onde só quem é perfeito, famoso e ganha medalhas importa. Isso acaba deixando de fora quem não joga tão bem. Como o formato dos nossos Jogos Interclasses na escola quebra esse mito?",
         alternativas: [
@@ -141,7 +142,7 @@
       },
       {
         id: 9,
-        imagem: "https://picsum.photos/seed/tenis9/800/400",
+        imagem: "https://loremflickr.com/800/400/tennis,court/all",
         tipo: 'objetiva',
         pergunta: "O Tênis de Campo é visto por muita gente na sociedade como um esporte de 'rico', que só dá para jogar se você tiver raquetes caras e for sócio de um clube fechado. O trabalho com o MINI TÊNIS na quadra da nossa escola quebra esse preconceito porque:",
         alternativas: [
@@ -160,7 +161,7 @@
     ];
 
     // ============================================================================
-    // 🔥 2. CHAVES DO FIREBASE (COLE AS SUAS AQUI E TIRE O MODO DE TESTE)
+    // 🔥 2. CHAVES DO FIREBASE (COLE AS SUAS AQUI)
     // ============================================================================
     const firebaseConfig = {
   apiKey: "AIzaSyDyXgCm2bgPdxHhpjdnCK8Wm-x6zrCnLb8",
@@ -182,7 +183,7 @@
       const [aluno, setAluno] = React.useState({ nome: '', turma: '' });
       const [erroNome, setErroNome] = React.useState('');
       
-      const [questoesProva, setQuestoesProva] = React.useState([]); // Questões embaralhadas
+      const [questoesProva, setQuestoesProva] = React.useState([]); 
       const [questaoAtual, setQuestaoAtual] = React.useState(0);
       const [respostas, setRespostas] = React.useState({});
       const [notaFinal, setNotaFinal] = React.useState(0);
@@ -194,7 +195,7 @@
 
       const valorPorQuestao = VALOR_TOTAL_PROVA / BANCO_DE_QUESTOES.length;
 
-      // Função para embaralhar Arrays (Anti-cola)
+      // Função Anti-Cola (Embaralha)
       const embaralharArray = (array) => {
         let arr = [...array];
         for (let i = arr.length - 1; i > 0; i--) {
@@ -215,22 +216,18 @@
           return;
         }
 
-        // Prepara e embaralha a prova exclusiva para este aluno
         let processadas = BANCO_DE_QUESTOES.map(q => {
           if (q.tipo === 'objetiva') {
-            // Mapeia qual é a certa e remove o "A) ", "B) " fixo do texto
             let alts = q.alternativas.map((alt, idx) => ({
               texto: alt.replace(/^[A-Ea-e]\)\s*/, '').trim(),
               isCorreta: idx === q.respostaCorreta
             }));
-            return { ...q, altsObj: embaralharArray(alts) }; // Embaralha alternativas
+            return { ...q, altsObj: embaralharArray(alts) };
           }
           return q;
         });
 
-        // Embaralha a ordem das questões
         setQuestoesProva(embaralharArray(processadas));
-        
         setErroNome('');
         setRespostas({});
         setQuestaoAtual(0);
@@ -316,7 +313,6 @@
           const dataFormatada = new Date(sub.data).toLocaleString('pt-BR');
           let respostasDiscursivas = "";
           
-          // Mantém a ordem original do banco para a planilha ficar organizada
           BANCO_DE_QUESTOES.forEach((q, idx) => {
             if(q.tipo === 'discursiva') {
               const textoLimpo = (sub.respostas[q.id] || 'Em branco').replace(/(\r\n|\n|\r)/gm, " ");
@@ -389,13 +385,12 @@
 
               <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
                 
-                {/* IMAGEM DA QUESTÃO (SE TIVER) */}
                 {questoesProva[questaoAtual].imagem && (
                   <img src={questoesProva[questaoAtual].imagem} alt="Imagem da questão" className="w-full h-48 md:h-64 object-cover rounded-xl mb-6 shadow-sm border-2 border-slate-100" />
                 )}
 
                 <h2 className="text-xl font-bold mb-6 text-slate-800 leading-relaxed">
-                  Questão {questaoAtual + 1}: {questoesProva[questaoAtual].pergunta}
+                  {questoesProva[questaoAtual].pergunta}
                 </h2>
 
                 {questoesProva[questaoAtual].tipo === 'objetiva' ? (
@@ -473,6 +468,20 @@
                       </div>
                     );
                   })}
+
+                  {/* 👇 MENSAGEM E BOTÃO DE FIM DE PROVA (NOVIDADE AQUI) 👇 */}
+                  <div className="bg-green-100 border-2 border-green-300 rounded-2xl p-6 text-center shadow-md mt-10">
+                    <h3 className="text-green-800 font-black text-xl mb-2">✅ Tudo certo!</h3>
+                    <p className="text-green-700 font-medium mb-6">Sua prova foi enviada com sucesso ao professor.</p>
+                    <button 
+                      onClick={() => window.location.reload()}
+                      className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg transition-transform transform hover:scale-105"
+                    >
+                      FIM DE PROVA 🏁
+                    </button>
+                  </div>
+                  {/* 👆 FIM DA MENSAGEM 👆 */}
+
                 </div>
               </div>
             </div>
