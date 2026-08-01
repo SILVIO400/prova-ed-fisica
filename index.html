@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avaliação 3º Bimestre - Educação Física</title>
+  <title>Avaliação Bimestral - Educação Física</title>
   
-  <!-- Dependências do sistema -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 </head>
@@ -28,10 +26,9 @@
     const SENHA_PROFESSOR = "prof123";
 
     const CONTEUDOS_PROVA = [
-      "Jogos Interclasses", 
-      "Ginástica de Conscientização Corporal",
-      "Ginástica de Condicionamento Físico",
-      "Tênis de Campo"
+      "Regras do Voleibol", 
+      "História das Olimpíadas", 
+      "Sedentarismo e Saúde"
     ];
 
     const TURMAS = ["8º ano A", "8º ano B", "8º ano C", "8º ano D", "8º ano E", "8º ano F", "8º ano G"];
@@ -39,8 +36,9 @@
     const BANCO_DE_QUESTOES = [
       {
         id: 1,
+        imagem: "https://images.unsplash.com/photo-1592656094267-764a45160876?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 01: Nas primeiras aulas do bimestre, nós organizamos o Projeto Jogos Interclasses. Em vez de o professor decidir tudo, a turma participou da divisão dos times e escolheu quem seriam os integrantes de cada equipe. Por que essa forma de escolha é importante para a nossa turma?",
+        pergunta: "Nas primeiras aulas do bimestre, nós organizamos o Projeto Jogos Interclasses. Em vez de o professor decidir tudo, a turma participou da divisão dos times e escolheu quem seriam os integrantes de cada equipe. Por que essa forma de escolha é importante para a nossa turma?",
         alternativas: [
           "A) Para garantir que só os alunos que jogam muito bem participem das decisões, deixando o resto da turma sem função.",
           "B) Para que todo mundo aprenda a liderar, trabalhar em equipe e cooperar, mostrando que os jogos da escola dependem do esforço de todos, e não de uma pessoa só.",
@@ -51,8 +49,9 @@
       },
       {
         id: 2,
+        imagem: "https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 02: Nas aulas de Ginástica de Conscientização Corporal, nós fizemos exercícios de respiração e relaxamento depois das atividades mais pesadas. Como esse aprendizado sobre respirar bem pode te ajudar na sua vida fora da escola?",
+        pergunta: "Nas aulas de Ginástica de Conscientização Corporal, nós fizemos exercícios de respiração e relaxamento depois das atividades mais pesadas. Como esse aprendizado sobre respirar bem pode te ajudar na sua vida fora da escola?",
         alternativas: [
           "A) Não ajuda em nada, serve apenas para passar o tempo e descansar no final da aula.",
           "B) Ajuda a acalmar a mente e o corpo, controlando o nervosismo e o estresse em momentos difíceis, como na hora de fazer uma prova ou passar por um problema.",
@@ -63,8 +62,9 @@
       },
       {
         id: 3,
+        imagem: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 03: Muitos perfis na internet postam fotos de corpos perfeitos e cheios de filtros, dizendo que ter saúde é ser extremamente magro ou ter músculos gigantes. Depois do que aprendemos sobre postura e cuidados com o corpo, o que é ter um corpo saudável de verdade?",
+        pergunta: "Muitos perfis na internet postam fotos de corpos perfeitos e cheios de filtros, dizendo que ter saúde é ser extremamente magro ou ter músculos gigantes. Depois do que aprendemos sobre postura e cuidados com o corpo, o que é ter um corpo saudável de verdade?",
         alternativas: [
           "A) Tentar mudar o próprio corpo a todo custo para ficar igual aos influenciadores da internet, mesmo que isso faça mal à saúde.",
           "B) Ter um corpo que funciona bem, sem dores, mantendo uma boa postura no dia a dia e respeitando o seu próprio tipo físico.",
@@ -75,8 +75,9 @@
       },
       {
         id: 4,
+        imagem: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 04: Durante um jogo do Interclasses na quadra do CEF 412, rolou uma dúvida sobre uma falta que o árbitro não viu. Pensando no respeito e no espírito de equipe (fair play), o que os alunos devem fazer?",
+        pergunta: "Durante um jogo do Interclasses na quadra do CEF 412, rolou uma dúvida sobre uma falta que o árbitro não viu. Pensando no respeito e no espírito de equipe (fair play), o que os alunos devem fazer?",
         alternativas: [
           "A) Abandonar o jogo na hora e exigir que a partida seja cancelada porque o árbitro errou.",
           "B) Começar uma discussão brigando alto, afinal, o mais importante de tudo é ganhar o jogo de qualquer jeito.",
@@ -87,8 +88,9 @@
       },
       {
         id: 5,
+        imagem: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 05: Nas aulas de alongamento, vimos a diferença entre esticar o corpo para relaxar e treinar para ganhar flexibilidade. Pensando na nossa saúde para o futuro, por que manter o corpo flexível é importante?",
+        pergunta: "Nas aulas de alongamento, vimos a diferença entre esticar o corpo para relaxar e treinar para ganhar flexibilidade. Pensando na nossa saúde para o futuro, por que manter o corpo flexível é importante?",
         alternativas: [
           "A) Porque faz com que a gente cresça mais rápido em altura durante a adolescência.",
           "B) Porque ajuda o corpo a se movimentar livremente, evita aquelas dores chatas causadas por ficar muito tempo sentado e facilita tarefas simples do dia a dia.",
@@ -99,8 +101,9 @@
       },
       {
         id: 6,
+        imagem: "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 06: Muitas pessoas acham que para entrar em forma e cuidar da saúde é obrigatório pagar uma mensalidade de academia cara ou comprar produtos da moda. Na escola, nós praticamos a CALISTENIA para quebrar essa ideia. O que é a calistenia?",
+        pergunta: "Muitas pessoas acham que para entrar em forma e cuidar da saúde é obrigatório pagar uma mensalidade de academia cara ou comprar produtos da moda. Na escola, nós praticamos a CALISTENIA para quebrar essa ideia. O que é a calistenia?",
         alternativas: [
           "A) Um treino feito apenas com aparelhos modernos de musculação e pesos pesados.",
           "B) Exercícios de força e resistência feitos usando apenas o peso do próprio corpo, mostrando que dá para treinar em qualquer lugar e de graça.",
@@ -111,8 +114,9 @@
       },
       {
         id: 7,
+        imagem: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 07: Nos circuitos com cones e brincadeiras de estafeta, vocês precisaram correr rápido, mudar de direção e pensar rápido para ajudar o time. Além de melhorar a agilidade do corpo, o que mais esse tipo de treino ajuda a desenvolver?",
+        pergunta: "Nos circuitos com cones e brincadeiras de estafeta, vocês precisaram correr rápido, mudar de direção e pensar rápido para ajudar o time. Além de melhorar a agilidade do corpo, o que mais esse tipo de treino ajuda a desenvolver?",
         alternativas: [
           "A) Ensina os alunos a jogarem sozinhos, sem precisar falar ou olhar para os colegas.",
           "B) Melhora a concentração, o raciocínio rápido para resolver problemas e a amizade, já que o time precisa se apoiar e se comunicar.",
@@ -123,8 +127,9 @@
       },
       {
         id: 8,
+        imagem: "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 08: Muitas vezes, as redes sociais e a TV mostram o esporte apenas como um negócio milionário, onde só quem é perfeito, famoso e ganha medalhas importa. Isso acaba deixando de fora quem não joga tão bem. Como o formato dos nossos Jogos Interclasses na escola quebra esse mito?",
+        pergunta: "Muitas vezes, as redes sociais e a TV mostram o esporte apenas como um negócio milionário, onde só quem é perfeito, famoso e ganha medalhas importa. Isso acaba deixando de fora quem não joga tão bem. Como o formato dos nossos Jogos Interclasses na escola quebra esse mito?",
         alternativas: [
           "A) Copiando as regras dos atletas profissionais para dar chance apenas aos melhores da escola.",
           "B) Trocando as aulas na quadra por jogos de videogame para ninguém se cansar.",
@@ -135,8 +140,9 @@
       },
       {
         id: 9,
+        imagem: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=800&q=80",
         tipo: 'objetiva',
-        pergunta: "Questão 09: O Tênis de Campo é visto por muita gente na sociedade como um esporte de 'rico', que só dá para jogar se você tiver raquetes caras e for sócio de um clube fechado. O trabalho com o MINI TÊNIS na quadra da nossa escola quebra esse preconceito porque:",
+        pergunta: "O Tênis de Campo é visto por muita gente na sociedade como um esporte de 'rico', que só dá para jogar se você tiver raquetes caras e for sócio de um clube fechado. O trabalho com o MINI TÊNIS na quadra da nossa escola quebra esse preconceito porque:",
         alternativas: [
           "A) Mostra que o tênis realmente só serve para quem tem muito dinheiro para gastar.",
           "B) Prova que o esporte pode ser de todo mundo quando adaptamos o espaço (quadra menor) e usamos materiais simples, incluindo todos os alunos.",
@@ -148,11 +154,12 @@
       {
         id: 10,
         tipo: 'discursiva',
-        pergunta: "Questão 10 (Discursiva): Sobre sua experiência nos Jogos Interclasse CEF412 – 2026 (qualquer área), escreva abaixo:\n1 – O que foi muito bom?\n2 – O que podia ser melhor?\n3 – O que foi ruim?"
+        pergunta: "Sobre sua experiência nos Jogos Interclasse CEF412 – 2026, escreva abaixo:\n1 – O que foi muito bom?\n2 – O que podia ser melhor?\n3 – O que foi ruim?"
       }
     ];
+
     // ============================================================================
-    // 🔥 2. CHAVES DO FIREBASE (COLE AS SUAS AQUI)
+    // 🔥 2. CHAVES DO FIREBASE (COLE AS SUAS AQUI E TIRE O MODO DE TESTE)
     // ============================================================================
     const firebaseConfig = {
   apiKey: "AIzaSyDyXgCm2bgPdxHhpjdnCK8Wm-x6zrCnLb8",
@@ -161,9 +168,8 @@
   storageBucket: "provas-ed-fisica.firebasestorage.app",
   messagingSenderId: "258687419332",
   appId: "1:258687419332:web:2409356a2ec5e88784da91"
-};
+  };
 
-    // Inicialização do Banco de Dados
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
@@ -175,6 +181,7 @@
       const [aluno, setAluno] = React.useState({ nome: '', turma: '' });
       const [erroNome, setErroNome] = React.useState('');
       
+      const [questoesProva, setQuestoesProva] = React.useState([]); // Questões embaralhadas
       const [questaoAtual, setQuestaoAtual] = React.useState(0);
       const [respostas, setRespostas] = React.useState({});
       const [notaFinal, setNotaFinal] = React.useState(0);
@@ -186,6 +193,16 @@
 
       const valorPorQuestao = VALOR_TOTAL_PROVA / BANCO_DE_QUESTOES.length;
 
+      // Função para embaralhar Arrays (Anti-cola)
+      const embaralharArray = (array) => {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      };
+
       const iniciarProva = () => {
         const nomePalavras = aluno.nome.trim().split(' ');
         if (nomePalavras.length < 2) {
@@ -196,16 +213,36 @@
           setErroNome('Por favor, selecione sua turma.');
           return;
         }
+
+        // Prepara e embaralha a prova exclusiva para este aluno
+        let processadas = BANCO_DE_QUESTOES.map(q => {
+          if (q.tipo === 'objetiva') {
+            // Mapeia qual é a certa e remove o "A) ", "B) " fixo do texto
+            let alts = q.alternativas.map((alt, idx) => ({
+              texto: alt.replace(/^[A-Ea-e]\)\s*/, '').trim(),
+              isCorreta: idx === q.respostaCorreta
+            }));
+            return { ...q, altsObj: embaralharArray(alts) }; // Embaralha alternativas
+          }
+          return q;
+        });
+
+        // Embaralha a ordem das questões
+        setQuestoesProva(embaralharArray(processadas));
+        
         setErroNome('');
+        setRespostas({});
+        setQuestaoAtual(0);
         setTela('prova');
       };
 
       const registrarResposta = (valor) => {
-        setRespostas({ ...respostas, [questaoAtual]: valor });
+        const q = questoesProva[questaoAtual];
+        setRespostas({ ...respostas, [q.id]: valor });
       };
 
       const proximaQuestao = () => {
-        if (questaoAtual < BANCO_DE_QUESTOES.length - 1) {
+        if (questaoAtual < questoesProva.length - 1) {
           setQuestaoAtual(questaoAtual + 1);
         } else {
           finalizarProva();
@@ -215,20 +252,23 @@
       const finalizarProva = async () => {
         setIsSubmitting(true);
         
-        // Trava de segurança caso esqueça de colocar as chaves do Firebase
         if (firebaseConfig.apiKey === "SUA_API_KEY") {
-          alert("Erro: O sistema não pode enviar a prova porque as chaves do Firebase ainda não foram configuradas no código.");
+          alert("Erro: Configure o Firebase no código.");
           setIsSubmitting(false);
           return;
         }
 
         let notaCalculada = 0;
-        BANCO_DE_QUESTOES.forEach((q, index) => {
-          const respAluno = respostas[index];
-          if (q.tipo === 'objetiva' && respAluno === q.respostaCorreta) {
-            notaCalculada += valorPorQuestao;
-          } else if (q.tipo === 'discursiva' && respAluno && String(respAluno).trim() !== '') {
-            notaCalculada += valorPorQuestao;
+        let respostasParaBanco = {};
+
+        questoesProva.forEach(q => {
+          const resp = respostas[q.id];
+          if (q.tipo === 'objetiva') {
+            if (resp && resp.isCorreta) notaCalculada += valorPorQuestao;
+            respostasParaBanco[q.id] = resp ? resp.texto : 'Em branco';
+          } else {
+            if (resp && String(resp).trim() !== '') notaCalculada += valorPorQuestao;
+            respostasParaBanco[q.id] = resp ? String(resp) : 'Em branco';
           }
         });
 
@@ -239,12 +279,12 @@
             nome: aluno.nome,
             turma: aluno.turma,
             nota: notaCalculada.toFixed(2),
-            respostas: respostas,
+            respostas: respostasParaBanco,
             data: new Date().toISOString()
           });
           setTela('resultado');
         } catch (error) {
-          alert("Ocorreu um erro ao salvar a prova. Verifique sua conexão com a internet ou as configurações do Firebase.");
+          alert("Erro ao salvar. Verifique o Firebase.");
         }
         setIsSubmitting(false);
       };
@@ -253,18 +293,14 @@
         if (senhaInput === SENHA_PROFESSOR) {
           setErroSenha('');
           setTela('admin');
-          
           if (firebaseConfig.apiKey === "SUA_API_KEY") return;
-
           try {
             const snapshot = await db.collection("avaliacoes").orderBy("data", "desc").get();
             const dados = [];
-            snapshot.forEach((doc) => {
-              dados.push({ id: doc.id, ...doc.data() });
-            });
+            snapshot.forEach((doc) => dados.push({ id: doc.id, ...doc.data() }));
             setSubmissoes(dados);
           } catch(e) {
-            alert("Erro ao buscar dados do Firebase.");
+             alert("Erro ao buscar dados.");
           }
         } else {
           setErroSenha('Senha incorreta!');
@@ -272,23 +308,21 @@
       };
 
       const exportarCSV = () => {
-        // 1. Adicionado \uFEFF para consertar os acentos no Excel
         let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
-        
-        // 2. Trocado as vírgulas por ponto e vírgula (;)
         csvContent += "Data;Nome;Turma;Nota;Respostas Discursivas\n";
         
         submissoes.forEach(sub => {
           const dataFormatada = new Date(sub.data).toLocaleString('pt-BR');
           let respostasDiscursivas = "";
+          
+          // Mantém a ordem original do banco para a planilha ficar organizada
           BANCO_DE_QUESTOES.forEach((q, idx) => {
             if(q.tipo === 'discursiva') {
-              const textoLimpo = (sub.respostas[idx] || 'Em branco').replace(/(\r\n|\n|\r)/gm, " ");
-              respostasDiscursivas += `Q${idx+1}: ${textoLimpo} | `;
+              const textoLimpo = (sub.respostas[q.id] || 'Em branco').replace(/(\r\n|\n|\r)/gm, " ");
+              respostasDiscursivas += `Q${q.id}: ${textoLimpo} | `;
             }
           });
           
-          // 3. Trocado as vírgulas por ponto e vírgula (;) nesta linha também
           const linha = `"${dataFormatada}";"${sub.nome}";"${sub.turma}";"${sub.nota}";"${respostasDiscursivas}"`;
           csvContent += linha + "\n";
         });
@@ -300,6 +334,7 @@
         document.body.appendChild(link);
         link.click();
       };
+
       return (
         <div className="min-h-screen">
           
@@ -307,7 +342,6 @@
           {tela === 'inicio' && (
             <div className="max-w-md mx-auto pt-12 px-6 flex flex-col items-center">
               <div className="bg-orange-500 p-4 rounded-full mb-6 shadow-lg text-4xl">🏃</div>
-              
               <h1 className="text-3xl font-black text-center text-slate-900 mb-2">Avaliação Bimestral</h1>
               <div className="bg-green-100 text-green-800 px-4 py-1 rounded-full font-bold text-lg mb-8 shadow-sm">
                 Valor: {VALOR_TOTAL_PROVA.toFixed(1)} Pontos
@@ -318,45 +352,24 @@
                 <ul className="list-disc list-inside text-slate-600 mb-6 space-y-1">
                   {CONTEUDOS_PROVA.map((c, i) => <li key={i}>{c}</li>)}
                 </ul>
-
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-1">Nome Completo</label>
-                    <input 
-                      type="text" 
-                      placeholder="Digite seu nome e sobrenome"
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-orange-500 outline-none"
-                      value={aluno.nome}
-                      onChange={(e) => setAluno({...aluno, nome: e.target.value})}
-                    />
+                    <input type="text" placeholder="Digite seu nome e sobrenome" className="w-full px-4 py-3 rounded-lg border focus:ring-2 outline-none" value={aluno.nome} onChange={(e) => setAluno({...aluno, nome: e.target.value})} />
                   </div>
-
                   <div>
                     <label className="block text-sm font-semibold mb-1">Turma</label>
-                    <select 
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-orange-500 outline-none bg-white"
-                      value={aluno.turma}
-                      onChange={(e) => setAluno({...aluno, turma: e.target.value})}
-                    >
+                    <select className="w-full px-4 py-3 rounded-lg border bg-white focus:ring-2 outline-none" value={aluno.turma} onChange={(e) => setAluno({...aluno, turma: e.target.value})}>
                       <option value="">Selecione sua turma...</option>
                       {TURMAS.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
                   </div>
-
                   {erroNome && <p className="text-red-500 text-sm font-bold">{erroNome}</p>}
                 </div>
               </div>
 
-              <button 
-                onClick={iniciarProva}
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:scale-105"
-              >
-                INICIAR PROVA ➡️
-              </button>
-
-              <button onClick={() => setTela('loginAdmin')} className="mt-12 text-slate-400 p-2 text-xl" title="Área do Professor">
-                🔒
-              </button>
+              <button onClick={iniciarProva} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:scale-105">INICIAR PROVA ➡️</button>
+              <button onClick={() => setTela('loginAdmin')} className="mt-12 text-slate-400 p-2 text-xl" title="Área do Professor">🔒</button>
             </div>
           )}
 
@@ -365,53 +378,50 @@
             <div className="max-w-2xl mx-auto pt-8 px-4 pb-8">
               <div className="mb-6">
                 <div className="flex justify-between text-sm font-bold text-slate-500 mb-2">
-                  <span>Questão {questaoAtual + 1} de {BANCO_DE_QUESTOES.length}</span>
+                  <span>Questão {questaoAtual + 1} de {questoesProva.length}</span>
                   <span>{(valorPorQuestao).toFixed(2)} pts</span>
                 </div>
                 <div className="w-full bg-slate-200 rounded-full h-2.5">
-                  <div className="bg-orange-500 h-2.5 rounded-full" style={{ width: `${((questaoAtual + 1) / BANCO_DE_QUESTOES.length) * 100}%` }}></div>
+                  <div className="bg-orange-500 h-2.5 rounded-full" style={{ width: `${((questaoAtual + 1) / questoesProva.length) * 100}%` }}></div>
                 </div>
               </div>
 
               <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                
+                {/* IMAGEM DA QUESTÃO (SE TIVER) */}
+                {questoesProva[questaoAtual].imagem && (
+                  <img src={questoesProva[questaoAtual].imagem} alt="Imagem da questão" className="w-full h-48 md:h-64 object-cover rounded-xl mb-6 shadow-sm border-2 border-slate-100" />
+                )}
+
                 <h2 className="text-xl font-bold mb-6 text-slate-800 leading-relaxed">
-                  {BANCO_DE_QUESTOES[questaoAtual].pergunta}
+                  Questão {questaoAtual + 1}: {questoesProva[questaoAtual].pergunta}
                 </h2>
 
-                {BANCO_DE_QUESTOES[questaoAtual].tipo === 'objetiva' ? (
+                {questoesProva[questaoAtual].tipo === 'objetiva' ? (
                   <div className="space-y-3">
-                    {BANCO_DE_QUESTOES[questaoAtual].alternativas.map((alt, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => registrarResposta(idx)}
-                        className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
-                          respostas[questaoAtual] === idx 
-                            ? 'border-orange-500 bg-orange-50 font-bold text-orange-700' 
-                            : 'border-slate-200 hover:border-orange-300 hover:bg-slate-50 text-slate-600'
-                        }`}
-                      >
-                        {alt}
-                      </button>
-                    ))}
+                    {questoesProva[questaoAtual].altsObj.map((altObj, idx) => {
+                       const selecionada = respostas[questoesProva[questaoAtual].id]?.texto === altObj.texto;
+                       return (
+                         <button
+                           key={idx}
+                           onClick={() => registrarResposta(altObj)}
+                           className={`w-full text-left p-4 rounded-xl border-2 transition-all ${selecionada ? 'border-orange-500 bg-orange-50 font-bold text-orange-700' : 'border-slate-200 hover:border-orange-300 hover:bg-slate-50 text-slate-600'}`}
+                         >
+                           <span className="font-bold mr-2">{['A', 'B', 'C', 'D'][idx]})</span>
+                           {altObj.texto}
+                         </button>
+                       )
+                    })}
                   </div>
                 ) : (
                   <div>
-                    <textarea
-                      className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none h-40 resize-none"
-                      placeholder="Digite sua resposta aqui..."
-                      value={respostas[questaoAtual] || ''}
-                      onChange={(e) => registrarResposta(e.target.value)}
-                    ></textarea>
+                    <textarea className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none h-40 resize-none" placeholder="Digite sua resposta aqui..." value={respostas[questoesProva[questaoAtual].id] || ''} onChange={(e) => registrarResposta(e.target.value)}></textarea>
                     <p className="text-xs text-slate-400 mt-2">* Essa pergunta precisa ser respondida digitando.</p>
                   </div>
                 )}
 
-                <button 
-                  onClick={proximaQuestao}
-                  disabled={isSubmitting || respostas[questaoAtual] === undefined}
-                  className="mt-8 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl"
-                >
-                  {isSubmitting ? 'Enviando para o professor...' : (questaoAtual === BANCO_DE_QUESTOES.length - 1 ? 'FINALIZAR PROVA ✅' : 'PRÓXIMA QUESTÃO ➡️')}
+                <button onClick={proximaQuestao} disabled={isSubmitting || respostas[questoesProva[questaoAtual].id] === undefined} className="mt-8 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl">
+                  {isSubmitting ? 'Enviando para o professor...' : (questaoAtual === questoesProva.length - 1 ? 'FINALIZAR PROVA ✅' : 'PRÓXIMA QUESTÃO ➡️')}
                 </button>
               </div>
             </div>
@@ -424,42 +434,35 @@
                 <div className="bg-blue-600 p-8 text-center text-white">
                   <h2 className="text-2xl font-bold mb-2">Prova Concluída!</h2>
                   <p className="opacity-80 mb-6">{aluno.nome} • {aluno.turma}</p>
-                  
                   <div className="inline-block bg-white rounded-2xl p-6 text-slate-800 shadow-2xl">
                     <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Sua Nota</p>
-                    <p className="text-6xl font-black text-blue-600">
-                      {notaFinal.toFixed(1)}<span className="text-2xl text-slate-400">/{VALOR_TOTAL_PROVA.toFixed(1)}</span>
-                    </p>
+                    <p className="text-6xl font-black text-blue-600">{notaFinal.toFixed(1)}<span className="text-2xl text-slate-400">/{VALOR_TOTAL_PROVA.toFixed(1)}</span></p>
                   </div>
                 </div>
 
                 <div className="p-6 sm:p-8 space-y-6 bg-slate-50">
                   <h3 className="font-bold text-lg text-slate-700">Correção Automática:</h3>
-                  
-                  {BANCO_DE_QUESTOES.map((q, idx) => {
-                    const respAluno = respostas[idx];
-                    const acertou = q.tipo === 'objetiva' && respAluno === q.respostaCorreta;
-                    const respondeuDiscursiva = q.tipo === 'discursiva' && respAluno && String(respAluno).trim() !== '';
-
+                  {questoesProva.map((q, idx) => {
+                    const resp = respostas[q.id];
+                    
                     return (
                       <div key={idx} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                         <p className="font-semibold text-slate-800 mb-3 text-sm">{idx + 1}. {q.pergunta}</p>
-                        
                         {q.tipo === 'objetiva' ? (
                           <div>
-                            {acertou ? (
-                              <div className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">✅ Você acertou! ({q.alternativas[respAluno]})</div>
+                            {resp && resp.isCorreta ? (
+                              <div className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">✅ Você acertou! ({resp.texto})</div>
                             ) : (
                               <div className="space-y-2">
-                                <div className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">❌ Você errou: {respAluno !== undefined ? q.alternativas[respAluno] : 'Não respondeu'}</div>
-                                <div className="text-green-600 text-sm font-medium pl-2">↳ Resposta correta: {q.alternativas[q.respostaCorreta]}</div>
+                                <div className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">❌ Você errou: {resp ? resp.texto : 'Não respondeu'}</div>
+                                <div className="text-green-600 text-sm font-medium pl-2">↳ Resposta correta: {q.altsObj.find(a => a.isCorreta)?.texto}</div>
                               </div>
                             )}
                           </div>
                         ) : (
                           <div>
-                            <div className="bg-slate-50 border p-3 rounded-lg text-sm text-slate-600 mb-2 italic">"{respAluno || 'Deixou em branco'}"</div>
-                            {respondeuDiscursiva ? (
+                            <div className="bg-slate-50 border p-3 rounded-lg text-sm text-slate-600 mb-2 italic">"{resp || 'Deixou em branco'}"</div>
+                            {resp && String(resp).trim() !== '' ? (
                               <p className="text-green-600 text-sm font-bold">✅ Pontuação garantida (+{valorPorQuestao.toFixed(2)} pts)</p>
                             ) : (
                               <p className="text-red-500 text-sm font-bold">❌ Em branco (0 pts)</p>
@@ -480,13 +483,7 @@
               <div className="bg-white p-8 rounded-2xl shadow-xl text-center">
                 <div className="text-5xl mb-4">🔒</div>
                 <h2 className="text-xl font-bold mb-6">Painel do Professor</h2>
-                <input 
-                  type="password"
-                  placeholder="Senha de acesso"
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 mb-4 outline-none"
-                  value={senhaInput}
-                  onChange={(e) => setSenhaInput(e.target.value)}
-                />
+                <input type="password" placeholder="Senha de acesso" className="w-full px-4 py-3 rounded-lg border border-slate-300 mb-4 outline-none" value={senhaInput} onChange={(e) => setSenhaInput(e.target.value)} />
                 {erroSenha && <p className="text-red-500 mb-4 text-sm font-bold">{erroSenha}</p>}
                 <div className="flex gap-2">
                   <button onClick={() => setTela('inicio')} className="w-1/3 bg-slate-200 text-slate-700 font-bold py-3 rounded-xl">Voltar</button>
@@ -501,14 +498,8 @@
             <div className="max-w-5xl mx-auto pt-10 px-4 pb-12">
               <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-black text-slate-800">Relatório de Notas</h1>
-                <button 
-                  onClick={exportarCSV}
-                  className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg"
-                >
-                  📥 Baixar Planilha (CSV)
-                </button>
+                <button onClick={exportarCSV} className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg">📥 Baixar Planilha (CSV)</button>
               </div>
-
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left">
