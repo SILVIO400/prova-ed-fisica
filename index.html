@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliação Bimestral - Educação Física</title>
+  
+  <!-- Dependências do sistema -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    // ============================================================================
+    // ⚙️ 1. CONFIGURAÇÕES DA PROVA
+    // ============================================================================
+    const VALOR_TOTAL_PROVA = 4.0;
+    const SENHA_PROFESSOR = "prof123";
+
+    const CONTEUDOS_PROVA = [
+      "Regras do Voleibol", 
+      "História das Olimpíadas", 
+      "Sedentarismo e Saúde"
+    ];
+
+    const TURMAS = ["8º ano A", "8º ano B", "8º ano C", "8º ano D", "8º ano E", "8º ano F", "8º ano G"];
+
+    const BANCO_DE_QUESTOES = [
+      {
+        id: 1,
+        tipo: 'objetiva',
+        pergunta: "Qual é o número máximo de toques que uma equipe de voleibol pode dar na bola antes de passá-la para a quadra adversária (sem contar o bloqueio)?",
+        alternativas: ["1 toque", "2 toques", "3 toques", "4 toques"],
+        respostaCorreta: 2 
+      },
+      {
+        id: 2,
+        tipo: 'objetiva',
+        pergunta: "Onde e em que ano foram realizados os primeiros Jogos Olímpicos da Era Moderna?",
+        alternativas: ["Atenas, 1896", "Paris, 1900", "Londres, 1908", "Roma, 1892"],
+        respostaCorreta: 0
+      },
+      {
+        id: 3,
+        tipo: 'discursiva',
+        pergunta: "Explique com suas palavras o que é o sedentarismo e cite um problema de saúde que ele pode causar."
+      }
+    ];
+
+    // ============================================================================
+    // 🔥 2. CHAVES DO FIREBASE (COLE AS SUAS AQUI)
+    // ============================================================================
+    const firebaseConfig = {
+  apiKey: "AIzaSyDyXgCm2bgPdxHhpjdnCK8Wm-x6zrCnLb8",
+  authDomain: "provas-ed-fisica.firebaseapp.com",
+  projectId: "provas-ed-fisica",
+  storageBucket: "provas-ed-fisica.firebasestorage.app",
+  messagingSenderId: "258687419332",
+  appId: "1:258687419332:web:2409356a2ec5e88784da91"
+};
+
+    // Inicialização do Banco de Dados
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // ============================================================================
+    // 🚀 3. MOTOR DO APLICATIVO
+    // ============================================================================
+    function AvaliacaoApp() {
+      const [tela, setTela] = React.useState('inicio'); 
+      const [aluno, setAluno] = React.useState({ nome: '', turma: '' });
+      const [erroNome, setErroNome] = React.useState('');
+      
+      const [questaoAtual, setQuestaoAtual] = React.useState(0);
+      const [respostas, setRespostas] = React.useState({});
+      const [notaFinal, setNotaFinal] = React.useState(0);
+      const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+      const [senhaInput, setSenhaInput] = React.useState('');
+      const [erroSenha, setErroSenha] = React.useState('');
+      const [submissoes, setSubmissoes] = React.useState([]);
+
+      const valorPorQuestao = VALOR_TOTAL_PROVA / BANCO_DE_QUESTOES.length;
+
+      const iniciarProva = () => {
+        const nomePalavras = aluno.nome.trim().split(' ');
+        if (nomePalavras.length < 2) {
+          setErroNome('Por favor, escreva seu nome completo (nome e sobrenome).');
+          return;
+        }
+        if (!aluno.turma) {
+          setErroNome('Por favor, selecione sua turma.');
+          return;
+        }
+        setErroNome('');
+        setTela('prova');
+      };
+
+      const registrarResposta = (valor) => {
+        setRespostas({ ...respostas, [questaoAtual]: valor });
+      };
+
+      const proximaQuestao = () => {
+        if (questaoAtual < BANCO_DE_QUESTOES.length - 1) {
+          setQuestaoAtual(questaoAtual + 1);
+        } else {
+          finalizarProva();
+        }
+      };
+
+      const finalizarProva = async () => {
+        setIsSubmitting(true);
+        
+        // Trava de segurança caso esqueça de colocar as chaves do Firebase
+        if (firebaseConfig.apiKey === "SUA_API_KEY") {
+          alert("Erro: O sistema não pode enviar a prova porque as chaves do Firebase ainda não foram configuradas no código.");
+          setIsSubmitting(false);
+          return;
+        }
+
+        let notaCalculada = 0;
+        BANCO_DE_QUESTOES.forEach((q, index) => {
+          const respAluno = respostas[index];
+          if (q.tipo === 'objetiva' && respAluno === q.respostaCorreta) {
+            notaCalculada += valorPorQuestao;
+          } else if (q.tipo === 'discursiva' && respAluno && String(respAluno).trim() !== '') {
+            notaCalculada += valorPorQuestao;
+          }
+        });
+
+        setNotaFinal(notaCalculada);
+
+        try {
+          await db.collection("avaliacoes").add({
+            nome: aluno.nome,
+            turma: aluno.turma,
+            nota: notaCalculada.toFixed(2),
+            respostas: respostas,
+            data: new Date().toISOString()
+          });
+          setTela('resultado');
+        } catch (error) {
+          alert("Ocorreu um erro ao salvar a prova. Verifique sua conexão com a internet ou as configurações do Firebase.");
+        }
+        setIsSubmitting(false);
+      };
+
+      const acessarAdmin = async () => {
+        if (senhaInput === SENHA_PROFESSOR) {
+          setErroSenha('');
+          setTela('admin');
+          
+          if (firebaseConfig.apiKey === "SUA_API_KEY") return;
+
+          try {
+            const snapshot = await db.collection("avaliacoes").orderBy("data", "desc").get();
+            const dados = [];
+            snapshot.forEach((doc) => {
+              dados.push({ id: doc.id, ...doc.data() });
+            });
+            setSubmissoes(dados);
+          } catch(e) {
+            alert("Erro ao buscar dados do Firebase.");
+          }
+        } else {
+          setErroSenha('Senha incorreta!');
+        }
+      };
+
+      const exportarCSV = () => {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Data,Nome,Turma,Nota,Respostas Discursivas\n";
+        
+        submissoes.forEach(sub => {
+          const dataFormatada = new Date(sub.data).toLocaleString('pt-BR');
+          let respostasDiscursivas = "";
+          BANCO_DE_QUESTOES.forEach((q, idx) => {
+            if(q.tipo === 'discursiva') {
+              // Limpa quebras de linha para não quebrar a planilha
+              const textoLimpo = (sub.respostas[idx] || 'Em branco').replace(/(\r\n|\n|\r)/gm, " ");
+              respostasDiscursivas += `Q${idx+1}: ${textoLimpo} | `;
+            }
+          });
+          const linha = `"${dataFormatada}","${sub.nome}","${sub.turma}","${sub.nota}","${respostasDiscursivas}"`;
+          csvContent += linha + "\n";
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "relatorio_notas_ed_fisica.csv");
+        document.body.appendChild(link);
+        link.click();
+      };
+
+      return (
+        <div className="min-h-screen">
+          
+          {/* ================= TELA INICIAL ================= */}
+          {tela === 'inicio' && (
+            <div className="max-w-md mx-auto pt-12 px-6 flex flex-col items-center">
+              <div className="bg-orange-500 p-4 rounded-full mb-6 shadow-lg text-4xl">🏃</div>
+              
+              <h1 className="text-3xl font-black text-center text-slate-900 mb-2">Avaliação Bimestral</h1>
+              <div className="bg-green-100 text-green-800 px-4 py-1 rounded-full font-bold text-lg mb-8 shadow-sm">
+                Valor: {VALOR_TOTAL_PROVA.toFixed(1)} Pontos
+              </div>
+
+              <div className="w-full bg-white rounded-2xl shadow-xl p-6 mb-8 border-t-4 border-orange-500">
+                <h2 className="text-lg font-bold mb-4">📖 Conteúdos da Prova:</h2>
+                <ul className="list-disc list-inside text-slate-600 mb-6 space-y-1">
+                  {CONTEUDOS_PROVA.map((c, i) => <li key={i}>{c}</li>)}
+                </ul>
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Nome Completo</label>
+                    <input 
+                      type="text" 
+                      placeholder="Digite seu nome e sobrenome"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-orange-500 outline-none"
+                      value={aluno.nome}
+                      onChange={(e) => setAluno({...aluno, nome: e.target.value})}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold mb-1">Turma</label>
+                    <select 
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-orange-500 outline-none bg-white"
+                      value={aluno.turma}
+                      onChange={(e) => setAluno({...aluno, turma: e.target.value})}
+                    >
+                      <option value="">Selecione sua turma...</option>
+                      {TURMAS.map(t => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  </div>
+
+                  {erroNome && <p className="text-red-500 text-sm font-bold">{erroNome}</p>}
+                </div>
+              </div>
+
+              <button 
+                onClick={iniciarProva}
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:scale-105"
+              >
+                INICIAR PROVA ➡️
+              </button>
+
+              <button onClick={() => setTela('loginAdmin')} className="mt-12 text-slate-400 p-2 text-xl" title="Área do Professor">
+                🔒
+              </button>
+            </div>
+          )}
+
+          {/* ================= TELA DA PROVA ================= */}
+          {tela === 'prova' && (
+            <div className="max-w-2xl mx-auto pt-8 px-4 pb-8">
+              <div className="mb-6">
+                <div className="flex justify-between text-sm font-bold text-slate-500 mb-2">
+                  <span>Questão {questaoAtual + 1} de {BANCO_DE_QUESTOES.length}</span>
+                  <span>{(valorPorQuestao).toFixed(2)} pts</span>
+                </div>
+                <div className="w-full bg-slate-200 rounded-full h-2.5">
+                  <div className="bg-orange-500 h-2.5 rounded-full" style={{ width: `${((questaoAtual + 1) / BANCO_DE_QUESTOES.length) * 100}%` }}></div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+                <h2 className="text-xl font-bold mb-6 text-slate-800 leading-relaxed">
+                  {BANCO_DE_QUESTOES[questaoAtual].pergunta}
+                </h2>
+
+                {BANCO_DE_QUESTOES[questaoAtual].tipo === 'objetiva' ? (
+                  <div className="space-y-3">
+                    {BANCO_DE_QUESTOES[questaoAtual].alternativas.map((alt, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => registrarResposta(idx)}
+                        className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+                          respostas[questaoAtual] === idx 
+                            ? 'border-orange-500 bg-orange-50 font-bold text-orange-700' 
+                            : 'border-slate-200 hover:border-orange-300 hover:bg-slate-50 text-slate-600'
+                        }`}
+                      >
+                        {alt}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <div>
+                    <textarea
+                      className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none h-40 resize-none"
+                      placeholder="Digite sua resposta aqui..."
+                      value={respostas[questaoAtual] || ''}
+                      onChange={(e) => registrarResposta(e.target.value)}
+                    ></textarea>
+                    <p className="text-xs text-slate-400 mt-2">* Essa pergunta precisa ser respondida digitando.</p>
+                  </div>
+                )}
+
+                <button 
+                  onClick={proximaQuestao}
+                  disabled={isSubmitting || respostas[questaoAtual] === undefined}
+                  className="mt-8 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl"
+                >
+                  {isSubmitting ? 'Enviando para o professor...' : (questaoAtual === BANCO_DE_QUESTOES.length - 1 ? 'FINALIZAR PROVA ✅' : 'PRÓXIMA QUESTÃO ➡️')}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ================= TELA DE RESULTADOS ================= */}
+          {tela === 'resultado' && (
+            <div className="max-w-2xl mx-auto pt-12 px-4 pb-12">
+              <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div className="bg-blue-600 p-8 text-center text-white">
+                  <h2 className="text-2xl font-bold mb-2">Prova Concluída!</h2>
+                  <p className="opacity-80 mb-6">{aluno.nome} • {aluno.turma}</p>
+                  
+                  <div className="inline-block bg-white rounded-2xl p-6 text-slate-800 shadow-2xl">
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Sua Nota</p>
+                    <p className="text-6xl font-black text-blue-600">
+                      {notaFinal.toFixed(1)}<span className="text-2xl text-slate-400">/{VALOR_TOTAL_PROVA.toFixed(1)}</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-8 space-y-6 bg-slate-50">
+                  <h3 className="font-bold text-lg text-slate-700">Correção Automática:</h3>
+                  
+                  {BANCO_DE_QUESTOES.map((q, idx) => {
+                    const respAluno = respostas[idx];
+                    const acertou = q.tipo === 'objetiva' && respAluno === q.respostaCorreta;
+                    const respondeuDiscursiva = q.tipo === 'discursiva' && respAluno && String(respAluno).trim() !== '';
+
+                    return (
+                      <div key={idx} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <p className="font-semibold text-slate-800 mb-3 text-sm">{idx + 1}. {q.pergunta}</p>
+                        
+                        {q.tipo === 'objetiva' ? (
+                          <div>
+                            {acertou ? (
+                              <div className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">✅ Você acertou! ({q.alternativas[respAluno]})</div>
+                            ) : (
+                              <div className="space-y-2">
+                                <div className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">❌ Você errou: {respAluno !== undefined ? q.alternativas[respAluno] : 'Não respondeu'}</div>
+                                <div className="text-green-600 text-sm font-medium pl-2">↳ Resposta correta: {q.alternativas[q.respostaCorreta]}</div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="bg-slate-50 border p-3 rounded-lg text-sm text-slate-600 mb-2 italic">"{respAluno || 'Deixou em branco'}"</div>
+                            {respondeuDiscursiva ? (
+                              <p className="text-green-600 text-sm font-bold">✅ Pontuação garantida (+{valorPorQuestao.toFixed(2)} pts)</p>
+                            ) : (
+                              <p className="text-red-500 text-sm font-bold">❌ Em branco (0 pts)</p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================= LOGIN ADMIN ================= */}
+          {tela === 'loginAdmin' && (
+            <div className="max-w-sm mx-auto pt-32 px-4">
+              <div className="bg-white p-8 rounded-2xl shadow-xl text-center">
+                <div className="text-5xl mb-4">🔒</div>
+                <h2 className="text-xl font-bold mb-6">Painel do Professor</h2>
+                <input 
+                  type="password"
+                  placeholder="Senha de acesso"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 mb-4 outline-none"
+                  value={senhaInput}
+                  onChange={(e) => setSenhaInput(e.target.value)}
+                />
+                {erroSenha && <p className="text-red-500 mb-4 text-sm font-bold">{erroSenha}</p>}
+                <div className="flex gap-2">
+                  <button onClick={() => setTela('inicio')} className="w-1/3 bg-slate-200 text-slate-700 font-bold py-3 rounded-xl">Voltar</button>
+                  <button onClick={acessarAdmin} className="w-2/3 bg-slate-800 text-white font-bold py-3 rounded-xl">Entrar</button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ================= PLANILHA DO ADMIN ================= */}
+          {tela === 'admin' && (
+            <div className="max-w-5xl mx-auto pt-10 px-4 pb-12">
+              <div className="flex justify-between items-center mb-8">
+                <h1 className="text-3xl font-black text-slate-800">Relatório de Notas</h1>
+                <button 
+                  onClick={exportarCSV}
+                  className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg"
+                >
+                  📥 Baixar Planilha (CSV)
+                </button>
+              </div>
+
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead className="bg-slate-800 text-white">
+                      <tr>
+                        <th className="p-4">Data e Hora</th>
+                        <th className="p-4">Aluno</th>
+                        <th className="p-4">Turma</th>
+                        <th className="p-4 text-center">Nota Final</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {submissoes.length === 0 ? (
+                        <tr><td colSpan="4" className="p-8 text-center text-slate-500">Nenhuma prova entregue ainda.</td></tr>
+                      ) : (
+                        submissoes.map((sub) => (
+                          <tr key={sub.id} className="border-b border-slate-100 hover:bg-slate-50">
+                            <td className="p-4 text-sm text-slate-500">{new Date(sub.data).toLocaleTimeString('pt-BR', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'})}</td>
+                            <td className="p-4 font-bold text-slate-800">{sub.nome}</td>
+                            <td className="p-4"><span className="bg-slate-200 px-2 py-1 rounded text-xs font-bold">{sub.turma}</span></td>
+                            <td className="p-4 text-center font-black text-lg text-blue-600">{sub.nota}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <button onClick={() => setTela('inicio')} className="mt-8 text-slate-500 font-bold underline">Sair do Painel</button>
+            </div>
+          )}
+
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<AvaliacaoApp />);
+  </script>
+</body>
+</html>
