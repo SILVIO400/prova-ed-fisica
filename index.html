@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avaliação Bimestral - Educação Física</title>
+  <title>Avaliação 3º Bimestre - Educação Física</title>
   
   <!-- Dependências do sistema -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,9 +28,10 @@
     const SENHA_PROFESSOR = "prof123";
 
     const CONTEUDOS_PROVA = [
-      "Regras do Voleibol", 
-      "História das Olimpíadas", 
-      "Sedentarismo e Saúde"
+      "Jogos Interclasses", 
+      "Ginástica de Conscientização Corporal",
+      "Ginástica de Condicionamento Físico",
+      "Tênis de Campo"
     ];
 
     const TURMAS = ["8º ano A", "8º ano B", "8º ano C", "8º ano D", "8º ano E", "8º ano F", "8º ano G"];
@@ -39,24 +40,117 @@
       {
         id: 1,
         tipo: 'objetiva',
-        pergunta: "Qual é o número máximo de toques que uma equipe de voleibol pode dar na bola antes de passá-la para a quadra adversária (sem contar o bloqueio)?",
-        alternativas: ["1 toque", "2 toques", "3 toques", "4 toques"],
-        respostaCorreta: 2 
+        pergunta: "Questão 01: Nas primeiras aulas do bimestre, nós organizamos o Projeto Jogos Interclasses. Em vez de o professor decidir tudo, a turma participou da divisão dos times e escolheu quem seriam os integrantes de cada equipe. Por que essa forma de escolha é importante para a nossa turma?",
+        alternativas: [
+          "A) Para garantir que só os alunos que jogam muito bem participem das decisões, deixando o resto da turma sem função.",
+          "B) Para que todo mundo aprenda a liderar, trabalhar em equipe e cooperar, mostrando que os jogos da escola dependem do esforço de todos, e não de uma pessoa só.",
+          "C) Para fazer a aula passar mais rápido e o professor não precisar ter o trabalho de organizar os times.",
+          "D) Para criar uma rivalidade pesada entre os alunos e ver quem é o melhor logo no começo."
+        ],
+        respostaCorreta: 1 
       },
       {
         id: 2,
         tipo: 'objetiva',
-        pergunta: "Onde e em que ano foram realizados os primeiros Jogos Olímpicos da Era Moderna?",
-        alternativas: ["Atenas, 1896", "Paris, 1900", "Londres, 1908", "Roma, 1892"],
-        respostaCorreta: 0
+        pergunta: "Questão 02: Nas aulas de Ginástica de Conscientização Corporal, nós fizemos exercícios de respiração e relaxamento depois das atividades mais pesadas. Como esse aprendizado sobre respirar bem pode te ajudar na sua vida fora da escola?",
+        alternativas: [
+          "A) Não ajuda em nada, serve apenas para passar o tempo e descansar no final da aula.",
+          "B) Ajuda a acalmar a mente e o corpo, controlando o nervosismo e o estresse em momentos difíceis, como na hora de fazer uma prova ou passar por um problema.",
+          "C) Serve apenas para deixar os pulmões maiores, sem nenhuma relação com as nossas emoções ou sentimentos.",
+          "D) Garante que você nunca mais sinta cansaço físico nas pernas ou nos braços, não importa o esforço."
+        ],
+        respostaCorreta: 1
       },
       {
         id: 3,
+        tipo: 'objetiva',
+        pergunta: "Questão 03: Muitos perfis na internet postam fotos de corpos perfeitos e cheios de filtros, dizendo que ter saúde é ser extremamente magro ou ter músculos gigantes. Depois do que aprendemos sobre postura e cuidados com o corpo, o que é ter um corpo saudável de verdade?",
+        alternativas: [
+          "A) Tentar mudar o próprio corpo a todo custo para ficar igual aos influenciadores da internet, mesmo que isso faça mal à saúde.",
+          "B) Ter um corpo que funciona bem, sem dores, mantendo uma boa postura no dia a dia e respeitando o seu próprio tipo físico.",
+          "C) Achar que a ginástica serve apenas para sofrer até conseguir o corpo que a sociedade exige.",
+          "D) Acreditar que a nossa postura depende só da genética e que não podemos fazer nada para melhorar as dores nas costas."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 4,
+        tipo: 'objetiva',
+        pergunta: "Questão 04: Durante um jogo do Interclasses na quadra do CEF 412, rolou uma dúvida sobre uma falta que o árbitro não viu. Pensando no respeito e no espírito de equipe (fair play), o que os alunos devem fazer?",
+        alternativas: [
+          "A) Abandonar o jogo na hora e exigir que a partida seja cancelada porque o árbitro errou.",
+          "B) Começar uma discussão brigando alto, afinal, o mais importante de tudo é ganhar o jogo de qualquer jeito.",
+          "C) Conversar com respeito, aceitar a decisão de quem está apitando e resolver o problema conversando em equipe.",
+          "D) Ignorar as regras do jogo e continuar jogando de qualquer jeito, resolvendo os lances na força física."
+        ],
+        respostaCorreta: 2
+      },
+      {
+        id: 5,
+        tipo: 'objetiva',
+        pergunta: "Questão 05: Nas aulas de alongamento, vimos a diferença entre esticar o corpo para relaxar e treinar para ganhar flexibilidade. Pensando na nossa saúde para o futuro, por que manter o corpo flexível é importante?",
+        alternativas: [
+          "A) Porque faz com que a gente cresça mais rápido em altura durante a adolescência.",
+          "B) Porque ajuda o corpo a se movimentar livremente, evita aquelas dores chatas causadas por ficar muito tempo sentado e facilita tarefas simples do dia a dia.",
+          "C) Porque quem é flexível não precisa treinar força ou correr para cuidar do coração.",
+          "D) Porque é algo que só atletas precisam se preocupar, já que pessoas comuns não perdem a flexibilidade com o tempo."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 6,
+        tipo: 'objetiva',
+        pergunta: "Questão 06: Muitas pessoas acham que para entrar em forma e cuidar da saúde é obrigatório pagar uma mensalidade de academia cara ou comprar produtos da moda. Na escola, nós praticamos a CALISTENIA para quebrar essa ideia. O que é a calistenia?",
+        alternativas: [
+          "A) Um treino feito apenas com aparelhos modernos de musculação e pesos pesados.",
+          "B) Exercícios de força e resistência feitos usando apenas o peso do próprio corpo, mostrando que dá para treinar em qualquer lugar e de graça.",
+          "C) Uma aula onde os alunos ficam apenas sentados lendo textos sobre os músculos do corpo.",
+          "D) Uma corrida de velocidade muito longa feita ao redor da quadra da escola."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 7,
+        tipo: 'objetiva',
+        pergunta: "Questão 07: Nos circuitos com cones e brincadeiras de estafeta, vocês precisaram correr rápido, mudar de direção e pensar rápido para ajudar o time. Além de melhorar a agilidade do corpo, o que mais esse tipo de treino ajuda a desenvolver?",
+        alternativas: [
+          "A) Ensina os alunos a jogarem sozinhos, sem precisar falar ou olhar para os colegas.",
+          "B) Melhora a concentração, o raciocínio rápido para resolver problemas e a amizade, já que o time precisa se apoiar e se comunicar.",
+          "C) Atrapalha a atenção nas outras matérias da escola porque o cérebro fica cansado demais.",
+          "D) Serve apenas para separar quem é rápido de quem é lento, deixando de fora quem tem dificuldade."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 8,
+        tipo: 'objetiva',
+        pergunta: "Questão 08: Muitas vezes, as redes sociais e a TV mostram o esporte apenas como um negócio milionário, onde só quem é perfeito, famoso e ganha medalhas importa. Isso acaba deixando de fora quem não joga tão bem. Como o formato dos nossos Jogos Interclasses na escola quebra esse mito?",
+        alternativas: [
+          "A) Copiando as regras dos atletas profissionais para dar chance apenas aos melhores da escola.",
+          "B) Trocando as aulas na quadra por jogos de videogame para ninguém se cansar.",
+          "C) Dando chance para todo mundo participar, mudando regras para incluir todos e focando na amizade e na união das turmas.",
+          "D) Deixando participar apenas quem já joga em escolinhas ou clubes fora da escola."
+        ],
+        respostaCorreta: 2
+      },
+      {
+        id: 9,
+        tipo: 'objetiva',
+        pergunta: "Questão 09: O Tênis de Campo é visto por muita gente na sociedade como um esporte de 'rico', que só dá para jogar se você tiver raquetes caras e for sócio de um clube fechado. O trabalho com o MINI TÊNIS na quadra da nossa escola quebra esse preconceito porque:",
+        alternativas: [
+          "A) Mostra que o tênis realmente só serve para quem tem muito dinheiro para gastar.",
+          "B) Prova que o esporte pode ser de todo mundo quando adaptamos o espaço (quadra menor) e usamos materiais simples, incluindo todos os alunos.",
+          "C) Obriga a escola a comprar equipamentos profissionais caríssimos antes de começar a jogar.",
+          "D) Transforma o esporte em uma brincadeira sem regras, perdendo toda a história e a graça do jogo."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 10,
         tipo: 'discursiva',
-        pergunta: "Explique com suas palavras o que é o sedentarismo e cite um problema de saúde que ele pode causar."
+        pergunta: "Questão 10 (Discursiva): Sobre sua experiência nos Jogos Interclasse CEF412 – 2026 (qualquer área), escreva abaixo:\n1 – O que foi muito bom?\n2 – O que podia ser melhor?\n3 – O que foi ruim?"
       }
     ];
-
     // ============================================================================
     // 🔥 2. CHAVES DO FIREBASE (COLE AS SUAS AQUI)
     // ============================================================================
