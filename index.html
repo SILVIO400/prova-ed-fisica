@@ -157,7 +157,152 @@
         id: 10,
         imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTfiDkK1wCFp_-kibAUfuXePphxBHk_OvzjfGwT164VzjVmuRlkiLQPx8&s=10",
         tipo: 'discursiva',
-        pergunta: "Sobre sua experiência nos Jogos Interclasse CEF412 – 2026, escreva abaixo:\n1 – O que foi muito bom?\n2 – O que podia ser melhor?\n3 – O que foi ruim? (Na resposta, ponha o nº (1, 2 ou 3 antes da frase)"
+        pergunta: "Sobre sua experiência nos Jogos Interclasse CEF412 – 2026, escreva abaixo:\n1 – O que foi muito bom?\n2 – O que podia ser melhor?\n3 – O que foi ruim? (Na resposta, ponha o nº 1, 2 ou 3 antes da frase)"
+      }
+    ];
+// === BANCO NÍVEL 1: PROVA LEVE ===
+    const BANCO_DE_QUESTOES_ADAPTADAS_LEVE = [
+      {
+        id: 1,
+        tipo: 'objetiva_visual',
+        pergunta: "🤝 1. Por que foi importante a turma ajudar a montar os times nos Jogos Interclasses?",
+        alternativas: [
+          "Para todo mundo aprender a liderar e a trabalhar em equipe.",
+          "Para o professor não ter trabalho de organizar os jogos.",
+          "Para garantir que apenas os melhores jogadores participassem."
+        ],
+        respostaCorreta: 0 
+      },
+      {
+        id: 2,
+        tipo: 'objetiva_visual',
+        pergunta: "🧘 2. Como aprender a respirar fundo na aula pode nos ajudar?",
+        alternativas: [
+          "Serve apenas para descansar no final da aula de ginástica.",
+          "Ajuda a acalmar a mente e o corpo quando estamos nervosos ou estressados.",
+          "Garante que a gente nunca sinta cansaço físico nas pernas."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 3,
+        tipo: 'objetiva_visual',
+        pergunta: "🏃 3. Depois de falarmos sobre postura, o que é ter um corpo saudável de verdade?",
+        alternativas: [
+          "É tentar ficar muito magro igual aos influenciadores da internet.",
+          "É achar que a ginástica serve apenas para quem quer ficar muito forte.",
+          "É um corpo que funciona bem, sem dores e respeitando o seu tipo físico."
+        ],
+        respostaCorreta: 2
+      },
+      {
+        id: 4,
+        tipo: 'objetiva_visual',
+        pergunta: "⚖️ 4. No jogo no CEF 412, o árbitro não viu uma falta (fair play). O que os alunos devem fazer?",
+        alternativas: [
+          "Conversar com respeito e aceitar a decisão do árbitro em equipe.",
+          "Começar uma briga, pois o mais importante é ganhar o jogo.",
+          "Abandonar a partida na hora e pedir para cancelar o jogo."
+        ],
+        respostaCorreta: 0
+      },
+      {
+        id: 5,
+        tipo: 'objetiva_visual',
+        pergunta: "🤸 5. Por que manter o corpo flexível fazendo alongamento é importante?",
+        alternativas: [
+          "Porque faz com que a gente cresça mais rápido.",
+          "Porque ajuda o corpo a se movimentar livremente e evita dores do dia a dia.",
+          "Porque só assim não precisaremos cuidar do nosso coração."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 6,
+        tipo: 'objetiva_visual',
+        pergunta: "💪 6. Nas aulas praticamos a CALISTENIA. O que é isso?",
+        alternativas: [
+          "Um treino feito apenas com aparelhos modernos de academia e pesos pesados.",
+          "Uma aula onde ficamos apenas sentados lendo textos.",
+          "Exercícios feitos usando apenas o peso do próprio corpo, que dá para fazer em qualquer lugar."
+        ],
+        respostaCorreta: 2
+      },
+      {
+        id: 7,
+        tipo: 'objetiva_visual',
+        pergunta: "🎾 7. Como a adaptação do tênis na escola pode te ajudar a exercer o protagonismo na sua própria comunidade?",
+        alternativas: [
+          "A) Tomando a iniciativa de adaptar espaços públicos, como ruas, praças ou quadras do bairro, usando materiais alternativos.",
+          "B) Desprezando os outros esportes, pois agora você conhece um que considera superior aos outros.",
+          "C) Esperando passivamente que o governo construa quadras oficiais de tênis na comunidade."
+        ],
+        respostaCorreta: 0
+      },
+      {
+        id: 8,
+        tipo: 'objetiva_visual',
+        pergunta: "🏆 8. Como o formato dos nossos Jogos Interclasses incluiu todos os alunos?",
+        alternativas: [
+          "Dando chance para todo mundo participar, focando na amizade e na união da turma.",
+          "Copiando regras de profissionais para dar chance apenas aos melhores.",
+          "Deixando participar apenas quem já joga em clubes de esporte fora da escola."
+        ],
+        respostaCorreta: 0
+      },
+      {
+        id: 9,
+        tipo: 'objetiva_visual',
+        pergunta: "🎾 9. O que o trabalho com TÊNIS ADAPTADO na nossa escola mostrou?",
+        alternativas: [
+          "Que o esporte pode ser de todo mundo quando adaptamos a quadra e os materiais.",
+          "Que o tênis realmente só serve para quem tem muito dinheiro para gastar.",
+          "Que é uma brincadeira sem regras, que não precisa de atenção."
+        ],
+        respostaCorreta: 0
+      },
+      {
+        id: 10,
+        tipo: 'desenho',
+        pergunta: "✍️ 10. Sobre a sua experiência nos Jogos Interclasses CEF 412: Escreva abaixo o que foi muito legal e o que você NÃO gostou."
+      }
+    ];
+
+    // === BANCO NÍVEL 2: PROVA SUPER ADAPTADA (DI) ===
+    const BANCO_DE_QUESTOES_DI = [
+      {
+        id: 1,
+        tipo: 'objetiva_visual', 
+        pergunta: "🎨 1. SELECIONE a atitude correta: Durante o jogo no CEF 412, o juiz errou uma regra. O que o time deve fazer?",
+        alternativas: [
+          "Brigar e gritar com todo mundo.", 
+          "Conversar com respeito e aceitar."
+        ],
+        respostaCorreta: 1
+      },
+      {
+        id: 2,
+        tipo: 'certo_errado',
+        pergunta: "✔️ 2. MARQUE CERTO OU ERRADO: Ter um corpo saudável é cuidar da postura e se movimentar, não precisa tentar ser magro igual aos famosos da internet.",
+        alternativas: ["Certo ✅", "Errado ❌"],
+        respostaCorreta: 0
+      },
+      {
+        id: 3,
+        tipo: 'completar',
+        pergunta: "🔡 3. COMPLETE A PALAVRA (Cuidar do nosso corpo): S A Ú D _",
+        respostaCorretaTexto: "E"
+      },
+      {
+        id: 4,
+        tipo: 'emoji',
+        pergunta: "😊 4. CLIQUE na carinha que mostra o que você achou dos Jogos Interclasses:",
+        alternativas: ["☹️", "😐", "😀"]
+      },
+      {
+        id: 5,
+        tipo: 'desenho',
+        pergunta: "🖍️ 5. DESENHO: Digite abaixo (ou descreva) o que você desenharia sobre a parte que mais gostou dos jogos!"
       }
     ];
     // ============================================================================
@@ -183,6 +328,28 @@
       const [aluno, setAluno] = React.useState({ nome: '', turma: '' });
       const [erroNome, setErroNome] = React.useState('');
       
+      // === NOVO: CONTROLE DE ADAPTAÇÃO ===
+      const [tipoProva, setTipoProva] = React.useState('padrao'); // Pode ser: 'padrao', 'leve' ou 'di'
+
+      const ativarModoAdaptado = () => {
+        const senha = prompt("Acesso do Professor: Digite a senha para adaptar a prova");
+        if (senha === SENHA_PROFESSOR) {
+          const nivel = prompt("Digite o Nível:\n1 para PROVA LEVE\n2 para SUPER ADAPTADA (DI)");
+          if (nivel === '1') {
+            setTipoProva('leve');
+            alert("✅ Prova LEVE ativada para este aluno!");
+          } else if (nivel === '2') {
+            setTipoProva('di');
+            alert("✅ Prova SUPER ADAPTADA (DI) ativada!");
+          } else {
+            alert("❌ Opção inválida.");
+          }
+        } else if (senha) {
+          alert("❌ Senha incorreta.");
+        }
+      };
+      // ===================================
+
       const [questoesProva, setQuestoesProva] = React.useState([]); 
       const [questaoAtual, setQuestaoAtual] = React.useState(0);
       const [respostas, setRespostas] = React.useState({});
@@ -192,8 +359,9 @@
       const [senhaInput, setSenhaInput] = React.useState('');
       const [erroSenha, setErroSenha] = React.useState('');
       const [submissoes, setSubmissoes] = React.useState([]);
+      const [alunoSelecionado, setAlunoSelecionado] = React.useState(null);
 
-      const valorPorQuestao = VALOR_TOTAL_PROVA / BANCO_DE_QUESTOES.length;
+      const valorPorQuestao = VALOR_TOTAL_PROVA / (tipoProva === 'padrao' ? BANCO_DE_QUESTOES.length : (tipoProva === 'leve' ? BANCO_DE_QUESTOES_ADAPTADAS_LEVE.length : BANCO_DE_QUESTOES_DI.length));
 
       // Função Anti-Cola (Embaralha)
       const embaralharArray = (array) => {
@@ -216,18 +384,25 @@
           return;
         }
 
-        let processadas = BANCO_DE_QUESTOES.map(q => {
-          if (q.tipo === 'objetiva') {
+        // ESCOLHE O BANCO BASEADO NA OPÇÃO DO PROFESSOR
+        let bancoSelecionado = BANCO_DE_QUESTOES;
+        if (tipoProva === 'leve') bancoSelecionado = BANCO_DE_QUESTOES_ADAPTADAS_LEVE;
+        if (tipoProva === 'di') bancoSelecionado = BANCO_DE_QUESTOES_DI;
+
+        let processadas = bancoSelecionado.map(q => {
+          if (q.tipo === 'objetiva' || q.tipo === 'objetiva_visual' || q.tipo === 'certo_errado') {
             let alts = q.alternativas.map((alt, idx) => ({
               texto: alt.replace(/^[A-Ea-e]\)\s*/, '').trim(),
               isCorreta: idx === q.respostaCorreta
             }));
-            return { ...q, altsObj: embaralharArray(alts) };
+            // Nas adaptadas não embaralhamos as opções para não confundir o aluno
+            return { ...q, altsObj: tipoProva === 'padrao' ? embaralharArray(alts) : alts };
           }
           return q;
         });
 
-        setQuestoesProva(embaralharArray(processadas));
+        // Nas adaptadas não embaralhamos a ordem das questões
+        setQuestoesProva(tipoProva === 'padrao' ? embaralharArray(processadas) : processadas);
         setErroNome('');
         setRespostas({});
         setQuestaoAtual(0);
@@ -261,10 +436,24 @@
 
         questoesProva.forEach(q => {
           const resp = respostas[q.id];
-          if (q.tipo === 'objetiva') {
+          
+          // 1. Corrige questões normais de múltipla escolha
+          if (['objetiva', 'objetiva_visual', 'certo_errado'].includes(q.tipo)) {
             if (resp && resp.isCorreta) notaCalculada += valorPorQuestao;
             respostasParaBanco[q.id] = resp ? resp.texto : 'Em branco';
-          } else {
+          } 
+          // 2. Corrige a questão de completar a letra
+          else if (q.tipo === 'completar') {
+            if (resp && resp === q.respostaCorretaTexto) notaCalculada += valorPorQuestao;
+            respostasParaBanco[q.id] = resp ? String(resp) : 'Em branco';
+          } 
+          // 3. Corrige a questão do EMOJI (Opinião - Qualquer resposta ganha ponto!)
+          else if (q.tipo === 'emoji') {
+            if (resp) notaCalculada += valorPorQuestao;
+            respostasParaBanco[q.id] = resp ? resp.texto : 'Em branco';
+          }
+          // 4. Corrige desenhos e discursivas
+          else {
             if (resp && String(resp).trim() !== '') notaCalculada += valorPorQuestao;
             respostasParaBanco[q.id] = resp ? String(resp) : 'Em branco';
           }
@@ -332,6 +521,22 @@
         link.click();
       };
 
+      // 👇 COLEI O PASSO 1 EXATAMENTE AQUI 👇
+      const excluirProva = async (id) => {
+        const confirmacao = window.confirm("Tem certeza que deseja excluir esta prova? Essa ação não pode ser desfeita.");
+        if (confirmacao) {
+          try {
+            await db.collection("avaliacoes").doc(id).delete();
+            // Atualiza a lista na tela removendo a prova apagada
+            setSubmissoes(submissoes.filter(sub => sub.id !== id));
+            alert("Prova excluída com sucesso!");
+          } catch (error) {
+            alert("Erro ao excluir. Verifique sua conexão.");
+          }
+        }
+      };
+      // 👆 FIM DO PASSO 1 👆
+
       return (
         <div className="min-h-screen">
           
@@ -365,8 +570,20 @@
                 </div>
               </div>
 
-              <button onClick={iniciarProva} className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:scale-105">INICIAR PROVA ➡️</button>
-              <button onClick={() => setTela('loginAdmin')} className="mt-12 text-slate-400 p-2 text-xl" title="Área do Professor">🔒</button>
+              {tipoProva !== 'padrao' && (
+                <div className="w-full bg-purple-100 border-2 border-purple-500 text-purple-800 p-3 rounded-xl font-black text-center mb-6 animate-pulse shadow-md">
+                  🧩 PROVA ADAPTADA ({tipoProva === 'leve' ? 'NÍVEL 1' : 'NÍVEL 2'}) ATIVADA!
+                </div>
+              )}
+
+              <button onClick={iniciarProva} className={`w-full text-white font-bold py-4 rounded-xl shadow-lg transform transition hover:scale-105 ${tipoProva !== 'padrao' ? 'bg-purple-600 hover:bg-purple-700' : 'bg-orange-500 hover:bg-orange-600'}`}>
+                {tipoProva !== 'padrao' ? 'COMEÇAR MISSÃO 🚀' : 'INICIAR PROVA ➡️'}
+              </button>
+              
+              <div className="mt-12 flex gap-6">
+                <button onClick={() => setTela('loginAdmin')} className="text-slate-400 p-2 text-2xl hover:text-slate-600 transition" title="Área do Professor">🔒</button>
+                <button onClick={ativarModoAdaptado} className="text-slate-400 p-2 text-2xl hover:text-purple-600 transition" title="Adaptar Prova para este aluno">🧩</button>
+              </div>
             </div>
           )}
 
@@ -393,26 +610,52 @@
                   {questoesProva[questaoAtual].pergunta}
                 </h2>
 
-                {questoesProva[questaoAtual].tipo === 'objetiva' ? (
-                  <div className="space-y-3">
-                    {questoesProva[questaoAtual].altsObj.map((altObj, idx) => {
+                {questoesProva[questaoAtual].tipo === 'objetiva' || questoesProva[questaoAtual].tipo === 'objetiva_visual' || questoesProva[questaoAtual].tipo === 'certo_errado' || questoesProva[questaoAtual].tipo === 'emoji' ? (
+                  
+                  <div className={`space-y-4 ${questoesProva[questaoAtual].tipo === 'emoji' ? 'flex justify-center gap-6 space-y-0' : ''}`}>
+                    {(questoesProva[questaoAtual].altsObj || questoesProva[questaoAtual].alternativas.map((a, i)=>({texto: a, isCorreta: i === questoesProva[questaoAtual].respostaCorreta}))).map((altObj, idx) => {
                        const selecionada = respostas[questoesProva[questaoAtual].id]?.texto === altObj.texto;
                        return (
                          <button
                            key={idx}
                            onClick={() => registrarResposta(altObj)}
-                           className={`w-full text-left p-4 rounded-xl border-2 transition-all ${selecionada ? 'border-orange-500 bg-orange-50 font-bold text-orange-700' : 'border-slate-200 hover:border-orange-300 hover:bg-slate-50 text-slate-600'}`}
+                           className={`
+                             ${questoesProva[questaoAtual].tipo === 'emoji' ? 'text-7xl p-2 hover:scale-110 transition-transform bg-transparent border-0 shadow-none' : 'w-full text-left p-5 text-lg rounded-2xl border-4 transition-all'} 
+                             ${selecionada && questoesProva[questaoAtual].tipo !== 'emoji' ? 'border-purple-500 bg-purple-100 font-black text-purple-900 shadow-inner' : ''}
+                             ${!selecionada && questoesProva[questaoAtual].tipo !== 'emoji' ? 'border-slate-200 hover:border-purple-300 hover:bg-slate-50 text-slate-700 font-bold' : ''}
+                             ${selecionada && questoesProva[questaoAtual].tipo === 'emoji' ? 'scale-125 drop-shadow-2xl' : ''}
+                           `}
                          >
-                           <span className="font-bold mr-2">{['A', 'B', 'C', 'D'][idx]})</span>
+                           {tipoProva === 'padrao' && questoesProva[questaoAtual].tipo === 'objetiva' && <span className="font-bold mr-2">{['A', 'B', 'C', 'D'][idx]})</span>}
                            {altObj.texto}
                          </button>
                        )
                     })}
                   </div>
+
+                ) : questoesProva[questaoAtual].tipo === 'completar' ? (
+                  
+                  <div className="text-center py-8">
+                    <p className="text-5xl font-black tracking-widest text-slate-800 mb-6 flex items-center justify-center gap-4">
+                      S A Ú D 
+                      <input 
+                        type="text" 
+                        maxLength="1"
+                        className="w-20 h-20 text-center text-5xl border-4 border-purple-500 rounded-xl bg-purple-50 text-purple-700 outline-none uppercase shadow-inner"
+                        value={respostas[questoesProva[questaoAtual].id] || ''}
+                        onChange={(e) => registrarResposta(e.target.value.toUpperCase())}
+                      />
+                    </p>
+                  </div>
+
                 ) : (
                   <div>
-                    <textarea className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-orange-500 outline-none h-40 resize-none" placeholder="Digite sua resposta aqui..." value={respostas[questoesProva[questaoAtual].id] || ''} onChange={(e) => registrarResposta(e.target.value)}></textarea>
-                    <p className="text-xs text-slate-400 mt-2">* Essa pergunta precisa ser respondida digitando.</p>
+                    <textarea 
+                      className={`w-full p-4 rounded-xl border-4 focus:border-purple-500 outline-none h-40 resize-none text-lg ${questoesProva[questaoAtual].tipo === 'desenho' ? 'border-dashed border-slate-300 bg-slate-50' : 'border-slate-200'}`} 
+                      placeholder={questoesProva[questaoAtual].tipo === 'desenho' ? "Pode digitar aqui como seria o seu desenho..." : "Digite sua resposta aqui..."}
+                      value={respostas[questoesProva[questaoAtual].id] || ''} 
+                      onChange={(e) => registrarResposta(e.target.value)}>
+                    </textarea>
                   </div>
                 )}
 
@@ -440,24 +683,46 @@
                   <h3 className="font-bold text-lg text-slate-700">Correção Automática:</h3>
                   {questoesProva.map((q, idx) => {
                     const resp = respostas[q.id];
+                    // Removemos o 'emoji' daqui para ele ter uma regra própria abaixo
+                    const isObjType = ['objetiva', 'objetiva_visual', 'certo_errado'].includes(q.tipo);
                     
                     return (
                       <div key={idx} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                         <p className="font-semibold text-slate-800 mb-3 text-sm">{idx + 1}. {q.pergunta}</p>
-                        {q.tipo === 'objetiva' ? (
+                        
+                        {isObjType ? (
                           <div>
                             {resp && resp.isCorreta ? (
                               <div className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">✅ Você acertou! ({resp.texto})</div>
                             ) : (
                               <div className="space-y-2">
                                 <div className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">❌ Você errou: {resp ? resp.texto : 'Não respondeu'}</div>
-                                <div className="text-green-600 text-sm font-medium pl-2">↳ Resposta correta: {q.altsObj.find(a => a.isCorreta)?.texto}</div>
+                                <div className="text-green-600 text-sm font-medium pl-2">↳ Resposta correta: {q.altsObj ? q.altsObj.find(a => a.isCorreta)?.texto : q.alternativas[q.respostaCorreta]}</div>
+                              </div>
+                            )}
+                          </div>
+                        ) : q.tipo === 'emoji' ? (
+                          <div>
+                            {resp ? (
+                              <p className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">✅ Opinião registrada! Você escolheu: {resp.texto} (+{valorPorQuestao.toFixed(2)} pts)</p>
+                            ) : (
+                              <p className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">❌ Em branco (0 pts)</p>
+                            )}
+                          </div>
+                        ) : q.tipo === 'completar' ? (
+                          <div>
+                            {resp === q.respostaCorretaTexto ? (
+                              <div className="text-green-600 bg-green-50 p-3 rounded-lg font-medium">✅ Você acertou! ({resp})</div>
+                            ) : (
+                              <div className="space-y-2">
+                                <div className="text-red-500 bg-red-50 p-3 rounded-lg font-medium">❌ Você errou: {resp || 'Em branco'}</div>
+                                <div className="text-green-600 text-sm font-medium pl-2">↳ Resposta correta: {q.respostaCorretaTexto}</div>
                               </div>
                             )}
                           </div>
                         ) : (
                           <div>
-                            <div className="bg-slate-50 border p-3 rounded-lg text-sm text-slate-600 mb-2 italic">"{resp || 'Deixou em branco'}"</div>
+                            <div className="bg-slate-50 border p-3 rounded-lg text-sm text-slate-600 mb-2 italic">"{resp ? String(resp) : 'Deixou em branco'}"</div>
                             {resp && String(resp).trim() !== '' ? (
                               <p className="text-green-600 text-sm font-bold">✅ Pontuação garantida (+{valorPorQuestao.toFixed(2)} pts)</p>
                             ) : (
@@ -506,45 +771,96 @@
           {/* ================= PLANILHA DO ADMIN ================= */}
           {tela === 'admin' && (
             <div className="max-w-5xl mx-auto pt-10 px-4 pb-12">
-              <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-black text-slate-800">Relatório de Notas</h1>
-                <button onClick={exportarCSV} className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg">📥 Baixar Planilha (CSV)</button>
-              </div>
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead className="bg-slate-800 text-white">
-                      <tr>
-                        <th className="p-4">Data e Hora</th>
-                        <th className="p-4">Aluno</th>
-                        <th className="p-4">Turma</th>
-                        <th className="p-4 text-center">Nota Final</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {submissoes.length === 0 ? (
-                        <tr><td colSpan="4" className="p-8 text-center text-slate-500">Nenhuma prova entregue ainda.</td></tr>
-                      ) : (
-                        submissoes.map((sub) => (
-                          <tr key={sub.id} className="border-b border-slate-100 hover:bg-slate-50">
-                            <td className="p-4 text-sm text-slate-500">{new Date(sub.data).toLocaleTimeString('pt-BR', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'})}</td>
-                            <td className="p-4 font-bold text-slate-800">{sub.nome}</td>
-                            <td className="p-4"><span className="bg-slate-200 px-2 py-1 rounded text-xs font-bold">{sub.turma}</span></td>
-                            <td className="p-4 text-center font-black text-lg text-blue-600">{sub.nota}</td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+              
+              {alunoSelecionado ? (
+                <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8">
+                  <div className="flex justify-between items-center mb-6 border-b pb-4">
+                    <div>
+                      <h2 className="text-2xl font-black text-slate-800">{alunoSelecionado.nome}</h2>
+                      <p className="text-sm text-slate-500">Turma: <span className="font-bold text-slate-700">{alunoSelecionado.turma}</span> • Nota Final: <span className="font-black text-blue-600 text-lg">{alunoSelecionado.nota}</span></p>
+                      <p className="text-xs text-slate-400 mt-1">Enviado em: {new Date(alunoSelecionado.data).toLocaleString('pt-BR')}</p>
+                    </div>
+                    <button 
+                      onClick={() => setAlunoSelecionado(null)} 
+                      className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl transition-all shadow-sm"
+                    >
+                      ⬅️ Voltar à Lista
+                    </button>
+                  </div>
+
+                  <h3 className="font-bold text-lg text-slate-700 mb-4">Respostas detalhadas da avaliação:</h3>
+                  <div className="space-y-4">
+                    {Object.entries(alunoSelecionado.respostas || {}).map(([qId, resposta], idx) => (
+                      <div key={idx} className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-sm">
+                        <p className="font-bold text-xs text-slate-400 uppercase tracking-wider mb-1">Questão ID: {qId}</p>
+                        <p className="text-slate-800 font-semibold text-base">
+                          {String(resposta)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <button onClick={() => setTela('inicio')} className="mt-8 text-slate-500 font-bold underline">Sair do Painel</button>
+              ) : (
+                <div>
+                  <div className="flex justify-between items-center mb-8">
+                    <h1 className="text-3xl font-black text-slate-800">Relatório de Notas</h1>
+                    <button onClick={exportarCSV} className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg">📥 Baixar Planilha (CSV)</button>
+                  </div>
+                  <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left">
+                        <thead className="bg-slate-800 text-white">
+                          <tr>
+                            <th className="p-4">Data e Hora</th>
+                            <th className="p-4">Aluno</th>
+                            <th className="p-4">Turma</th>
+                            <th className="p-4 text-center">Nota Final</th>
+                            <th className="p-4 text-center">Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {submissoes.length === 0 ? (
+                            <tr><td colSpan="5" className="p-8 text-center text-slate-500">Nenhuma prova entregue ainda.</td></tr>
+                          ) : (
+                            submissoes.map((sub) => (
+                              <tr key={sub.id} className="border-b border-slate-100 hover:bg-slate-50">
+                                <td className="p-4 text-sm text-slate-500">{new Date(sub.data).toLocaleTimeString('pt-BR', {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'})}</td>
+                                <td className="p-4 font-bold text-slate-800">{sub.nome}</td>
+                                <td className="p-4"><span className="bg-slate-200 px-2 py-1 rounded text-xs font-bold">{sub.turma}</span></td>
+                                <td className="p-4 text-center font-black text-lg text-blue-600">{sub.nota}</td>
+                                <td className="p-4 text-center flex justify-center gap-2">
+                                  <button 
+                                    onClick={() => setAlunoSelecionado(sub)} 
+                                    className="text-blue-500 hover:bg-blue-50 p-2 rounded-lg transition-colors text-xl" 
+                                    title="Ver Prova do Aluno"
+                                  >
+                                    👁️
+                                  </button>
+                                  <button 
+                                    onClick={() => excluirProva(sub.id)} 
+                                    className="text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors text-xl" 
+                                    title="Excluir Prova"
+                                  >
+                                    🗑️
+                                  </button>
+                                </td>
+                              </tr>
+                            ))
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <button onClick={() => setTela('inicio')} className="mt-8 text-slate-500 font-bold underline">Sair do Painel</button>
+                </div>
+              )}
+
             </div>
           )}
 
         </div>
       );
-    }
+    }  {/* 👈 ESTA CHAVE FECHA A FUNÇÃO AvaliacaoApp() */}
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<AvaliacaoApp />);
